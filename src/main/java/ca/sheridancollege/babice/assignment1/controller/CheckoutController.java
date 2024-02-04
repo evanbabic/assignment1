@@ -8,8 +8,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class CheckoutController {
-    @Autowired
-    CartServices cartServices;
+    private final CartServices cartServices;
+
+    public CheckoutController(CartServices cartServices){
+        this.cartServices = cartServices;
+    }
 
     @GetMapping("/checkout")
     public String checkout(Model model){
