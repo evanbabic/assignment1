@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class CheckoutController {
     private final CartServices cartServices;
 
+    @Autowired
     public CheckoutController(CartServices cartServices){
         this.cartServices = cartServices;
     }

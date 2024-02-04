@@ -13,7 +13,7 @@
 </header>
 
 <body>
-<p>Checkout</p>
+<p class="headerText">Checkout</p>
 
 <table th:if="${itemsInCart != null && itemsInCart != ''}" class="prodList">
     <tr>
@@ -28,6 +28,8 @@
         <td th:text="${s.getProductPrice()}"></td>
     </tr>
 </table>
+
+<hr>
 
 <table class="prodList">
     <tr>

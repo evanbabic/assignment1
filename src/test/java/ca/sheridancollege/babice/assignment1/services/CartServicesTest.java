@@ -4,36 +4,57 @@ import ca.sheridancollege.babice.assignment1.beans.Cart;
 import ca.sheridancollege.babice.assignment1.beans.Product;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class CartServicesTest {
 
-    //testing the getsubtotal method.
+    //testing to ensure subtotals are being summed correctly
     @Test
-    void getSubTotal() {
+    public void testGetSubtotal(){
         Product a = new Product();
+        a.setProductId(1L);
+        a.setProductName("Prod 1");
+        a.setProductPrice(10.0);
+
         Product b = new Product();
-        Product c = new Product();
+        b.setProductId(2L);
+        b.setProductName("Prod 2");
+        b.setProductPrice(20.0);
 
-        a.setProductId(12345L);
-        a.setProductId(12346L);
-        a.setProductId(1237L);
-
-        a.setProductPrice(1000);
-        b.setProductPrice(1000);
-        c.setProductPrice(1000);
-
-        Cart cart = new Cart();
-        cart.getCartItems().add(a);
-        cart.getCartItems().add(b);
-        cart.getCartItems().add(c);
+        List<Product> prodList = new ArrayList<>();
+        prodList.add(a);
+        prodList.add(b);
 
         double total = 0;
 
-        for(Product product : cart.getCartItems()){
+        for(Product product : prodList){
             total += product.getProductPrice();
         }
 
         System.out.println(total);
+    }
+
+    //testing that items are being added properly to the cart
+    @Test
+    void testAddItem(){
+        Product a = new Product();
+        a.setProductId(1L);
+        a.setProductName("Prod 1");
+        a.setProductPrice(10.0);
+
+        Cart testCart = new Cart();
+        CartServices cartServices = new CartServices(testCart);
+
+        cartServices.addItem(a);
+
+        System.out.println(cartServices.getSize());
+        for(Product product : cartServices.getCart()){
+            System.out.println(product.getProductId());
+            System.out.println(product.getProductName());
+            System.out.println(product.getProductPrice());
+        }
     }
 }

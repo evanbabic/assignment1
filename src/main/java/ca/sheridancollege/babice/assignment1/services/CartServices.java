@@ -9,9 +9,9 @@ import java.util.List;
 
 @Service
 public class CartServices {
-    @Autowired
     private final Cart cart;
 
+    @Autowired
     public CartServices(Cart cart){
         this.cart = cart;
     }

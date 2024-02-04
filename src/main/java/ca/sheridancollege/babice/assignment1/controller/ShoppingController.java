@@ -3,7 +3,6 @@ package ca.sheridancollege.babice.assignment1.controller;
 import ca.sheridancollege.babice.assignment1.beans.Cart;
 import ca.sheridancollege.babice.assignment1.databases.ProductRepository;
 import ca.sheridancollege.babice.assignment1.services.CartServices;
-import ca.sheridancollege.babice.assignment1.services.ProductServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,14 +12,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class ShoppingController {
-    @Autowired
-    private ProductRepository productRepository;
-    @Autowired
-    ProductServices productServices = new ProductServices(productRepository);
+    private final ProductRepository productRepository;
+    private final CartServices cartServices;
+
     Cart shoppingCart = new Cart();
     @Autowired
-    CartServices cartServices = new CartServices(shoppingCart);
-
+    public ShoppingController(ProductRepository productRepository, CartServices cartServices){
+        this.productRepository = productRepository;
+        this.cartServices = cartServices;
+    }
 
     @GetMapping("/shopping")
     public String shopping(Model model){

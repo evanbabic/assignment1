@@ -29,7 +29,7 @@
         <td th:text="${s.getProductPrice()}"></td>
         <td>
             <form method="post" action="/addToCart">
-                <input type="submit" value="Order">
+                <input type="image" src="/images/addToCart.png" alt="Submit" width="30px">
                 <input type="hidden" name="productId" th:value="${s.getProductId()}">
             </form>
         </td>

@@ -1,6 +1,6 @@
 .prodList, td, tr, th{
     border: 2px solid;
-    background-color: aqua;
+    text-align: center;
 }
 
 .headerText{
@@ -31,4 +31,15 @@
 
 body{
     background-color: azure;
+}
+
+#pageText{
+    font-family: "Times New Roman", serif;
+    font-size: 26px;
+    color: red;
+}
+
+img{
+    width: 50%;
+    height: 50%;
 }

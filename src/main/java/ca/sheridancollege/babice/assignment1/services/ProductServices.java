@@ -28,6 +28,4 @@ public class ProductServices {
         product.setProductPrice(productPrice);
         productRepository.save(product);
     }
-
-
 }
