@@ -11,9 +11,28 @@
     <h1></h1>
 </header>
 <body>
+<table th:if="${productList != null && productList != ''}">
+    <tr>
+        <th>Product ID</th>
+        <th>Product Name</th>
+        <th>Product Price</th>
+    </tr>
 
+    <tr th:each="s:${productList}">
+        <td th:text="${s.getProductId()}"></td>
+        <td th:text="${s.getProductName()}"></td>
+        <td th:text="${s.getProductPrice()}"></td>
+    </tr>
+</table>
 
-
+<hr>
+<p>Insert Product</p>
+<form method="post" action="/formPost">
+    ID: <input type="text" name="productId" /><br>
+    Name: <input type="text" name="productName" /><br>
+    Price: <input type="text" name="productPrice" /><br>
+    <input type="submit" value="Add Product">
+</form>
 
 
 </body>
