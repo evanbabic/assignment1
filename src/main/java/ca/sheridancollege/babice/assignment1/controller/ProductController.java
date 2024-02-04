@@ -14,7 +14,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class ProductController {
     @Autowired
     private ProductRepository productRepository;
-    ProductServices productServices = new ProductServices();
+    @Autowired
+    ProductServices productServices = new ProductServices(productRepository);
 
     @GetMapping("/products")
     public String products(Model model){
@@ -26,11 +27,7 @@ public class ProductController {
     @PostMapping("/formPost")
     public String formPost(@RequestParam String productId, @RequestParam String productName,
                            @RequestParam String productPrice, Model model){
-        Product product = new Product();
-        product.setProductId(Long.parseLong(productId));
-        product.setProductName(productName);
-        product.setProductPrice(Float.parseFloat(productPrice));
-        productRepository.save(product);
+        productServices.addProduct(Long.parseLong(productId), productName, Float.parseFloat(productPrice));
         return "redirect:/products";
     }
 }

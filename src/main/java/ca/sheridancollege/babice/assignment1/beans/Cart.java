@@ -3,24 +3,18 @@ package ca.sheridancollege.babice.assignment1.beans;
 import jakarta.persistence.Entity;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@NoArgsConstructor
 @Data
+@Component
 public class Cart {
-    private List<Product> cart = new ArrayList<>();
+    private List<Product> cartItems = new ArrayList<>();
 
-    public void addItem(Product product){
-        cart.add(product);
+    public Cart(){
+        this.cartItems = new ArrayList<>();
     }
 
-    public int getSize(){
-        return cart.size();
-    }
-
-    public List<Product> getCart(){
-        return cart;
-    }
 }
