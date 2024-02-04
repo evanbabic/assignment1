@@ -27,12 +27,27 @@
         <td th:text="${s.getProductId()}"></td>
         <td th:text="${s.getProductName()}"></td>
         <td th:text="${s.getProductPrice()}"></td>
-        <td th:text="Order"></td>
+        <td>
+            <form method="post" action="/addToCart">
+                <input type="submit" value="Order">
+                <input type="hidden" name="productId" th:value="${s.getProductId()}">
+            </form>
+        </td>
     </tr>
 </table>
 </body>
 
 <p class="headerText">Shopping Cart</p>
+
+<table>
+    <tr>
+        <th>Items in Cart</th>
+    </tr>
+
+    <tr>
+        <td th:text="${itemsInCart}"></td>
+    </tr>
+</table>
 
 
 <footer th:replace="~{HeaderAndFooter::footer}"></footer>
