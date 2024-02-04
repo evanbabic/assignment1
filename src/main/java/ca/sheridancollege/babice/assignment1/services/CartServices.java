@@ -29,4 +29,13 @@ public class CartServices {
         return cart.getCartItems();
     }
 
+    public double getSubTotal(){
+        double subTotal = 0;
+
+        for(Product product : cart.getCartItems()){
+            subTotal += product.getProductPrice();
+        }
+
+        return subTotal;
+    }
 }

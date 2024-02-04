@@ -12,6 +12,7 @@ import java.util.List;
 @Component
 public class Cart {
     private List<Product> cartItems = new ArrayList<>();
+    private double total;
 
     public Cart(){
         this.cartItems = new ArrayList<>();

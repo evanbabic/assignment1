@@ -29,6 +29,31 @@
     </tr>
 </table>
 
+<table class="prodList">
+    <tr>
+        <th>Subtotal</th>
+    </tr>
+
+    <tr>
+        <td th:text="${subTotal}"></td>
+    </tr>
+    <tr>
+        <th>Sales Tax (13%)</th>
+    </tr>
+
+    <tr>
+        <td th:text="${tax}"></td>
+    </tr>
+
+    <tr>
+        <th>Total</th>
+    </tr>
+
+    <tr>
+        <td th:text="${total}"></td>
+    </tr>
+
+</table>
 </body>
 
 <footer th:replace="~{HeaderAndFooter::footer}"></footer>
