@@ -3,15 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <title>Products</title>
-    <link rel="stylesheet" href="../static/css/header.css">
-    <link rel="stylesheet" href="../static/css/footer.css">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/footer.css">
 </head>
 
 <header th:replace="~{HeaderAndFooter::Header}">
     <h1></h1>
 </header>
 <body>
-<table th:if="${productList != null && productList != ''}">
+<p class="headerText">Product List</p>
+
+<table th:if="${productList != null && productList != ''}" class="prodList">
     <tr>
         <th>Product ID</th>
         <th>Product Name</th>
@@ -26,12 +29,12 @@
 </table>
 
 <hr>
-<p>Insert Product</p>
-<form method="post" action="/formPost">
-    ID: <input type="text" name="productId" /><br>
-    Name: <input type="text" name="productName" /><br>
-    Price: <input type="text" name="productPrice" /><br>
-    <input type="submit" value="Add Product">
+<p class="headerText">Insert Product</p>
+<form method="post" action="/formPost" class="productForm">
+    <b>ID:</b> <input type="text" th:value="${productId}" name="productId" readonly="readonly" class="inputBox"/><br>
+    <b>Name:</b> <input type="text" name="productName" class="inputBox" /><br>
+    <b>Price:</b> <input type="text" name="productPrice" class="inputBox"/><br>
+    <input type="submit" value="Add Product" class="submitBtn">
 </form>
 
 

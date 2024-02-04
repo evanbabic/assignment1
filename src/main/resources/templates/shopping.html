@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Shopping</title>
-    <link rel="stylesheet" href="../static/css/header.css">
-    <link rel="stylesheet" href="../static/css/footer.css">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/footer.css">
 </head>
 
 <header th:replace="~{HeaderAndFooter::Header}">
@@ -12,8 +13,27 @@
 </header>
 
 <body>
-<p>Shopping Page</p>
+<p class="headerText">Shopping List</p>
+
+<table th:if="${productList != null && productList != ''}" class="prodList">
+    <tr>
+        <th>Product ID</th>
+        <th>Product Name</th>
+        <th>Product Price</th>
+        <th>Action</th>
+    </tr>
+
+    <tr th:each="s:${productList}">
+        <td th:text="${s.getProductId()}"></td>
+        <td th:text="${s.getProductName()}"></td>
+        <td th:text="${s.getProductPrice()}"></td>
+        <td th:text="Order"></td>
+    </tr>
+</table>
 </body>
+
+<p class="headerText">Shopping Cart</p>
+
 
 <footer th:replace="~{HeaderAndFooter::footer}"></footer>
 

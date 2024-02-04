@@ -2,6 +2,7 @@ package ca.sheridancollege.babice.assignment1.controller;
 
 import ca.sheridancollege.babice.assignment1.beans.Product;
 import ca.sheridancollege.babice.assignment1.databases.ProductRepository;
+import ca.sheridancollege.babice.assignment1.services.ProductServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,10 +14,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class ProductController {
     @Autowired
     private ProductRepository productRepository;
+    ProductServices productServices = new ProductServices();
 
     @GetMapping("/products")
     public String products(Model model){
         model.addAttribute("productList", productRepository.findAll());
+        model.addAttribute("productId", productServices.generateId());
         return "products";
     }
 
