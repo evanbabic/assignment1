@@ -9,8 +9,11 @@ import java.util.List;
 @Data
 @Component
 public class Cart {
+
+    //list of Products in the cart
     private List<Product> cartItems;
 
+    //constructor to instantiate the list of Products in cart
     public Cart(){
         this.cartItems = new ArrayList<>();
     }

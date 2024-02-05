@@ -1,8 +1,9 @@
 package ca.sheridancollege.babice.assignment1.controller;
 
-import ca.sheridancollege.babice.assignment1.beans.Cart;
 import ca.sheridancollege.babice.assignment1.databases.ProductRepository;
 import ca.sheridancollege.babice.assignment1.services.CartServices;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,10 +13,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class ShoppingController {
+    private static final Logger logger = LoggerFactory.getLogger(ProductController.class);
     private final ProductRepository productRepository;
     private final CartServices cartServices;
 
-    Cart shoppingCart = new Cart();
     @Autowired
     public ShoppingController(ProductRepository productRepository, CartServices cartServices){
         this.productRepository = productRepository;
@@ -24,15 +25,30 @@ public class ShoppingController {
 
     @GetMapping("/shopping")
     public String shopping(Model model){
-        model.addAttribute("productList", productRepository.findAll());
-        model.addAttribute("itemsInCart", cartServices.getSize());
-        return "shopping";
+        try{
+            model.addAttribute("productList", productRepository.findAll());
+            model.addAttribute("itemsInCart", cartServices.getSize());
+            return "shopping";
+        }
+        catch(Exception e){
+            logger.error("Error: ", e);
+            model.addAttribute("errorMessage", e);
+            return "error";
+        }
     }
 
     @PostMapping("/addToCart")
     public String addToCart(Model model, @RequestParam Integer productId){
-        cartServices.addItem(productRepository.findById(productId).get());
-        model.addAttribute("itemsInCart", cartServices.getSize());
-        return "redirect:/shopping";
+        try {
+            cartServices.addItem(productRepository.findById(productId).get());
+            model.addAttribute("itemsInCart", cartServices.getSize());
+            return "redirect:/shopping";
+        }
+
+        catch(Exception e){
+            logger.error("Error: ", e);
+            model.addAttribute("errorMessage", e);
+            return "error";
+        }
     }
 }

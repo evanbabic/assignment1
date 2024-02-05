@@ -35,6 +35,7 @@ public class ProductController {
         //on error
         catch(Exception e){
             logger.error("Error: ", e);
+            model.addAttribute("errorMessage", e);
             return "error";
         }
     }

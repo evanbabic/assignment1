@@ -10,6 +10,8 @@ import java.io.Serializable;
 @NoArgsConstructor
 @Entity
 public class Product implements Serializable{
+
+    //data-persistence in H2 database via member variables having corresponding columns in table
     @Id
     @Column(name="PRODID")
     private Long productId;
