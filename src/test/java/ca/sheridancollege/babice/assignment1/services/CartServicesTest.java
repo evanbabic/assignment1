@@ -14,6 +14,8 @@ class CartServicesTest {
     //testing to ensure subtotals are being summed correctly
     @Test
     public void testGetSubtotal(){
+
+        //creating sample objects to test logic on
         Product a = new Product();
         a.setProductId(1L);
         a.setProductName("Prod 1");
@@ -30,11 +32,13 @@ class CartServicesTest {
 
         double total = 0;
 
+
+        //testing that summing product.getProductPrice gives the desired results
         for(Product product : prodList){
             total += product.getProductPrice();
         }
 
-        System.out.println(total);
+        assertEquals(30.0, total);
     }
 
     //testing that items are being added properly to the cart
@@ -50,11 +54,12 @@ class CartServicesTest {
 
         cartServices.addItem(a);
 
-        System.out.println(cartServices.getSize());
-        for(Product product : cartServices.getCart()){
-            System.out.println(product.getProductId());
-            System.out.println(product.getProductName());
-            System.out.println(product.getProductPrice());
-        }
+        //tests to see if objects are properly added to cart
+        assertEquals(1, cartServices.getSize());
+        assertEquals(1L, cartServices.getCart().get(0).getProductId());
+        assertEquals("Prod 1", cartServices.getCart().get(0).getProductName());
+        assertEquals(10.0, cartServices.getCart().get(0).getProductPrice());
+        //purposely failed text
+        //assertEquals("Prod", cartServices.getCart().get(0).getProductName());
     }
 }
