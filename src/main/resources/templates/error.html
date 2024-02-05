@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Error!</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/footer.css">
+</head>
+
+<body>
+<div id="flexContainer">
+
+    <header th:replace="~{HeaderAndFooter::Header}">
+        <h1>Evan's Online Shop 2024</h1>
+    </header>
+
+    <div>
+        <p id="pageText">Something went wrong!</p>
+        <p th:text="${errorMessage}"></p>
+        <p th:text="${errorDetails}"></p>
+    </div>
+
+    <footer th:replace="~{HeaderAndFooter::footer}"></footer>
+</div>
+
+</body>
+
+
+
+</html>

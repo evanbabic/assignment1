@@ -8,15 +8,26 @@
     <link rel="stylesheet" href="../css/footer.css">
 </head>
 
+<body>
+<div id="flexContainer">
+
 <header th:replace="~{HeaderAndFooter::Header}">
     <h1>Evan's Online Shop 2024</h1>
 </header>
 
-<body>
-    <p id="pageText">Evan Babic's Sample E-Commerce Website</p>
-    <img src="https://www.monsterinsights.com/wp-content/uploads/2019/11/breathtaking-online-shopping-statistics-you-never-knew.png" alt="Image Store">
-</body>
+    <div>
+        <p id="pageText">Evan Babic's Sample E-Commerce Website</p>
+    </div>
+
+    <div>
+        <img src="https://www.monsterinsights.com/wp-content/uploads/2019/11/breathtaking-online-shopping-statistics-you-never-knew.png" alt="Image Store">
+    </div>
 
 <footer th:replace="~{HeaderAndFooter::footer}"></footer>
+</div>
+
+</body>
+
+
 
 </html>

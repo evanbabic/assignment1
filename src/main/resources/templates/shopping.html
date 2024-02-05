@@ -8,11 +8,13 @@
     <link rel="stylesheet" href="../css/footer.css">
 </head>
 
+<body>
+<div id="flexContainer">
+
 <header th:replace="~{HeaderAndFooter::Header}">
     <h1></h1>
 </header>
 
-<body>
 <p class="headerText">Shopping List</p>
 
 <table th:if="${productList != null && productList != ''}" class="prodList">
@@ -35,21 +37,22 @@
         </td>
     </tr>
 </table>
+
+    <p class="headerText">Shopping Cart</p>
+
+    <table class="prodList">
+        <tr>
+            <th>Items in Cart</th>
+        </tr>
+
+        <tr>
+            <td th:text="${itemsInCart}"></td>
+        </tr>
+    </table>
+
+    <footer th:replace="~{HeaderAndFooter::footer}"></footer>
+
+</div>
+
 </body>
-
-<p class="headerText">Shopping Cart</p>
-
-<table>
-    <tr>
-        <th>Items in Cart</th>
-    </tr>
-
-    <tr>
-        <td th:text="${itemsInCart}"></td>
-    </tr>
-</table>
-
-
-<footer th:replace="~{HeaderAndFooter::footer}"></footer>
-
 </html>

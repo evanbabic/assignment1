@@ -8,10 +8,12 @@
     <link rel="stylesheet" href="../css/footer.css">
 </head>
 
+<body>
+<div id="flexContainer">
 <header th:replace="~{HeaderAndFooter::Header}">
     <h1></h1>
 </header>
-<body>
+
 <p class="headerText">Product List</p>
 
 <table th:if="${productList != null && productList != ''}" class="prodList">
@@ -37,8 +39,10 @@
     <input type="submit" value="Add Product" class="submitBtn">
 </form>
 
+<footer th:replace="~{HeaderAndFooter::footer}"></footer>
+
+</div>
 </body>
 
-<footer th:replace="~{HeaderAndFooter::footer}"></footer>
 
 </html>
