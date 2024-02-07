@@ -44,6 +44,16 @@ public class ProductController {
     public String formPost(@RequestParam String productId, @RequestParam String productName,
                            @RequestParam String productPrice, Model model){
 
+        if(productName == null || productName.isBlank()){
+            model.addAttribute("errorMessage", "Product name can't be blank.");
+            return  "error";
+        }
+
+        if(Float.parseFloat(productPrice) < 0 || Float.parseFloat(productPrice) > 999999){
+            model.addAttribute("errorMessage", "Product price must be between 0 and 999999.");
+            return "error";
+        }
+
         //checking if user input is valid
         try{
             productServices.addProduct(Long.parseLong(productId), productName, Float.parseFloat(productPrice));

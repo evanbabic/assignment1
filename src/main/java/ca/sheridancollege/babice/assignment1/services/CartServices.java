@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+//contains numerous methods for business logic regarding the shopping cart
 @Service
 public class CartServices {
     private final Cart cart;

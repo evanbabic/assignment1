@@ -59,3 +59,9 @@ img{
     justify-content: center;
     align-content: center;
 }
+
+#logo{
+    width:10%;
+    height: 10%;
+    display: inline-flex;
+}

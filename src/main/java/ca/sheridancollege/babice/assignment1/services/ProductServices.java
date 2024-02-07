@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.Random;
 
+//contains numerous methods related to business logic for Product objects
 @Service
 public class ProductServices {
     private final Random random = new Random();
