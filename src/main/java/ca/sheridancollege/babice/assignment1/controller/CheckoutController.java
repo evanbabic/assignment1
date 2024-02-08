@@ -19,6 +19,7 @@ public class CheckoutController {
 
     @GetMapping("/checkout")
     public String checkout(Model model){
+        //checks if cart details are loaded successfully
         try{
             model.addAttribute("itemsInCart", cartServices.getCart());
             model.addAttribute("subTotal", cartServices.getSubTotal());
@@ -27,10 +28,12 @@ public class CheckoutController {
             return "checkout";
         }
 
+        //handles any errors that may arise
         catch(Exception e){
             logger.error("Error: ", e);
             model.addAttribute("errorMessage", e);
-            return "error";
+
+            return "error"; //page specifically made to tell user what error occurred
         }
     }
 }

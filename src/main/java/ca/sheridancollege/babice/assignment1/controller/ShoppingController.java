@@ -25,11 +25,14 @@ public class ShoppingController {
 
     @GetMapping("/shopping")
     public String shopping(Model model){
+        //ensures products and cart are loaded successfully
         try{
             model.addAttribute("productList", productRepository.findAll());
             model.addAttribute("itemsInCart", cartServices.getSize());
             return "shopping";
         }
+
+        //handles error gracefully
         catch(Exception e){
             logger.error("Error: ", e);
             model.addAttribute("errorMessage", e);
@@ -39,12 +42,14 @@ public class ShoppingController {
 
     @PostMapping("/addToCart")
     public String addToCart(Model model, @RequestParam Integer productId){
+        //ensures product is added to cart successfully
         try {
             cartServices.addItem(productRepository.findById(productId).get());
             model.addAttribute("itemsInCart", cartServices.getSize());
             return "redirect:/shopping";
         }
 
+        //catches error and handles gracefully
         catch(Exception e){
             logger.error("Error: ", e);
             model.addAttribute("errorMessage", e);
